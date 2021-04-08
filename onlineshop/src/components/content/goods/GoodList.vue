@@ -4,18 +4,11 @@
             <h3 class="titlemes">推荐</h3>
         </div>
     </div>
-    <div class="wrapper">
-        <div  style="clear: both;">
+    <div class="wrapper" >
+        <div  >
             <ul class="goods">
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
-                <GoodListItem></GoodListItem>
+                <GoodListItem v-for="item in goods" :product="item" :key="item.id"></GoodListItem>
+                <div style=" clear:both; visibility:hidden;"></div>
             </ul>
         </div>
     </div>
@@ -29,7 +22,16 @@ export default {
     name: "GoodList",
     components: {
         GoodListItem
+    },
+    props: {
+        goods: {
+            type: Array,
+            default() {
+                return []
+            }
+        }
     }
+    
 }
 </script>
 
@@ -54,9 +56,8 @@ export default {
 }
 
 .titlemes{
-            -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
     font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
-    position: relative;
     width: 150px;
     height: 45px;
     font-size: 28px;
@@ -75,7 +76,7 @@ export default {
     color: #666;
     padding: 0;
     margin: 0 auto;
-    width: 990px;
+    width: 1200px;
     
 }
 
@@ -85,7 +86,8 @@ export default {
     color: #666;
     padding: 0;
     margin: 0 -5px;
-    background-color: #666  ;
 }
+
+
 
 </style>

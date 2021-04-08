@@ -60,7 +60,6 @@ export default {
     overflow: hidden;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
     background: #fff;
     width: 1300px;
 }

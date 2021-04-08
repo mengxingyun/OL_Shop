@@ -1,12 +1,26 @@
 import {request} from './request';
 
-export function getHomeAllData(){
+const url = 'http://127.0.0.1:8000/vue/';
+
+export function getHomeHotData(){
     return request({
-        url: 'https://a08fcdddeeee4c02a38700f35091372c.apig.cn-south-1.huaweicloudapis.com/test',
+        url: url,
         method: 'get',
+
         params: {
-            type: "getcommend"
+            type: "getHomeHotData"
         }
         
+    })
+}
+
+export function getHomeRecommendData(page){
+    return request({
+        url: url,
+        method: 'get',
+        params: {
+            type: "getHomeRecommendData",
+            page
+        }
     })
 }

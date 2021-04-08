@@ -1,16 +1,16 @@
 <template>
 <li class="each">
-    <a class="itemwrapper">
+    <a class="itemwrapper"  @click.prevent="goDetail(product.id)" >
         <div class="imgwrapper">
-            <img class="img" src="~assets/img/3.jpg">
+            <img class="img" :src="product.url">
         </div>
 
         <div class="mes">
-            <p class="title">标题</p>
+            <p class="title"> {{ product.name }} </p>
             <div class="pricewrapper">
                 <div class="price">
                     <i>&yen;</i>
-                    <span class="pricemes">10000</span>
+                    <span class="pricemes"> {{ product.price }} </span>
                 </div>
             </div>
         </div>
@@ -19,8 +19,26 @@
 </template>
 
 <script>
+import {useRouter} from 'vue-router';
 export default {
+    name: "GoodListItem",
+    props: {
+        product: Object,
+        default() {
+            return {
 
+            }
+        }
+    },
+    setup(){
+        const router = useRouter();
+        const goDetail = (id) => {
+            router.push({path:'/detail', query:{id}})
+        }
+        return {
+            goDetail,
+        }
+    }
 }
 </script>
 
@@ -48,7 +66,6 @@ export default {
     list-style: none;
     color: #666;
     padding: 0;
-    position: relative;
     overflow: hidden;
     transition: background .2s linear,opacity .2s linear!important;
     background: transparent;
@@ -152,7 +169,6 @@ export default {
     color: #666;
     padding: 0;
     list-style: none;
-    position: relative;
     float: left;
     background: #fff;
     width: 190px;

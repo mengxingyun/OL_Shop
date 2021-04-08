@@ -52,7 +52,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background: #666;
+  background:#F4F4F4 ;
 }
 
 #nav {
@@ -104,6 +104,7 @@
 
     position: sticky;
     top: 0px;
+    z-index: 100;
 }
 
 .text{
