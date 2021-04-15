@@ -20,6 +20,11 @@
   </div>
 
   <Recommend :recommends="recommends"></Recommend>
+  <div class="title">
+        <div class="titlewrapper">
+            <h3 class="titlemes">推荐</h3>
+        </div>
+    </div>
   <GoodList :goods="goods.list"></GoodList>
 </template>
 
@@ -57,17 +62,17 @@ export default {
       }
     };
     const refresh = () => {
-      const page_more = goods.page + 1;
+    const page_more = goods.page + 1;
 
-      getHomeRecommendData(page_more).then((res) => {
-        console.log("推荐数据+", res);
-        if (res.list.length > 0) {
-          goods.list = [...goods.list, ...res.list];
-          goods.page = goods.page + 1;
-          console.log(goods.list);
-          isRefreshBool.value = true;
-        }
-      });
+    getHomeRecommendData(page_more).then((res) => {
+    console.log("推荐数据+", res);
+    if (res.list.length > 0) {
+        goods.list = [...goods.list, ...res.list];
+        goods.page = goods.page + 1;
+        console.log(goods.list);
+        isRefreshBool.value = true;
+    }
+    });
     };
 
     onMounted(() => {
@@ -105,6 +110,40 @@ export default {
 
 .el-carousel__item{
      background-color: #d3dce6;
+}
+
+
+.title{
+    -webkit-font-smoothing: antialiased;
+    font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+    color: #666;
+    margin: 0;
+    padding: 0;
+    height: 65px;
+}
+
+.titlewrapper{
+    -webkit-font-smoothing: antialiased;
+    font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+    color: #666;
+    padding: 0;
+    margin: 0 auto;
+    width: 990px;
+}
+
+.titlemes{
+    -webkit-font-smoothing: antialiased;
+    font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
+    width: 150px;
+    height: 45px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 45px;
+    padding: 0 30px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    color: #333;
 }
 
 </style>

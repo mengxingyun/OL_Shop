@@ -8,6 +8,11 @@ export function request(config) {
     //请求拦截
     instance.interceptors.request.use(config => {
         //如果接口需要认证才能访问，需要在这里统一设置
+        // const token = window.localStorage.getItem('token');
+        // if(token){
+        //     config.headers.Authorization = token;
+        // }
+
         return config;
     }, err => {
 
