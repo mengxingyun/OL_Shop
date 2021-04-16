@@ -33,36 +33,81 @@ export function getOrderPre(token){
     })
 } 
 
+//获取订单列表
+export function getOrderList(token, status){
+    return request({
+        url: url,
+        method: 'get',
+
+        params: {
+            type: "getOrderList",
+            token,
+            status, 
+        }
+    })
+}
+
+//订单详情
+export function getOrderDetail(order_id, addr_id){
+    return request({
+        url: url,
+        method: 'get',
+
+        params: {
+            type: "getOrderDetail",
+            order_id,
+            addr_id
+        }
+    })
+}
+
 //订单支付,获取二维码
-export function payOrder(order){
+export function payOrder(order_id){
     return request({
         url: url,
         method: 'get',
 
         params: {
             type: "payOrder",
-            token,
-            id
+            order_id,
         }
     })
 }
 
-//订单状态
-export function payOrderStatus(order){
+export function cancelOrder(order_id){
+    return request({
+        url: url,
+        method: 'get',
 
-}
-
-//获取订单列表
-export function getOrderList(){
-
-}
-
-//订单详情
-export function getOrderDetail(){
-
+        params: {
+            type: "cancelOrder",
+            order_id,
+        }
+    })
 }
 
 //确认订单
-export function confirmOrder(){
+export function confirmOrder(order_id){
+    return request({
+        url: url,
+        method: 'get',
 
+        params: {
+            type: "confirmOrder",
+            order_id,
+        }
+    })
 }
+
+export function deleteOrder(order_id){
+    return request({
+        url: url,
+        method: 'get',
+
+        params: {
+            type: "deleteOrder",
+            order_id,
+        }
+    })
+}
+

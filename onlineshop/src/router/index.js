@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, useRouter } from 'vue-router';
 import store from '../store';
-import { defineComponent } from 'vue'
 import { ElMessage } from 'element-plus'
 
 const Home = () => import('../views/home/Home'); // 主页
@@ -14,6 +13,10 @@ const Address = () => import('../views/profile/Child/Address'); //地址列表
 const Order = () => import('../views/profile/Child/Order'); //订单
 const EditAddress = () => import('../views/profile/Child/editAddr');//编辑地址
 const CreateOrder = () => import('../views/order/CreateOrder'); //创建订单
+const OrderNoPay = () => import('../views/profile/Child/OrderNoPay'); //获取未支付订单
+const OrderhasPay = () => import('../views/profile/Child/OrderhasPay'); //获取已支付订单
+const OrderEnd = () => import('../views/profile/Child/OrderEnd');//已经取消和已经结束的订单
+const Search = () => import('../views/search/Search');
 
 const routes = [
   {
@@ -25,6 +28,11 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
   },
   {
     path: '/category',
@@ -60,19 +68,34 @@ const routes = [
     },
     children: [
       {
-        path: '/address',
+        path: 'address',
         name: 'Address',
         component: Address
       },
       {
-        path: '/order',
+        path: 'order',
         name: 'Order',
         component: Order
       },
       {
-        path: '/addrdetail',
+        path: 'addrdetail',
         name: 'AddrDetail',
         component: EditAddress
+      },
+      {
+        path: 'ordernopay',
+        name: 'OrderNoPay',
+        component: OrderNoPay
+      },
+      {
+        path: 'orderhaspay',
+        name: 'OrderHasPay',
+        component: OrderhasPay
+      },
+      {
+        path: 'orderend',
+        name: 'OrderEnd',
+        component: OrderEnd
       }
     ]
   },

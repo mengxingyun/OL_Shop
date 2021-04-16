@@ -87,7 +87,7 @@ export default {
                     type: 'warning',
                     offset: 300
                     });
-                    router.push({path:"/address"})
+                    router.push({path:"/profile/address"})
                 })
             }
             else{
@@ -102,7 +102,7 @@ export default {
                 }
                 editAddress(data).then((res) => {
                     console.log(res);
-                    router.push({path:'/address'})
+                    router.push({path:'/profile/address'})
                 })
             }
            

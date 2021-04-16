@@ -9,8 +9,10 @@
 
       <div id="search">
         <div class="form" role="searchbox">
-          <input type="text" autocomplete="off" class="text" aria-label="搜索" style="background: transparent;">
-          <button class="button" aria-label="搜索"><i  class="iconfont icon-sousuo"></i></button>
+          <input type="text" autocomplete="off" class="text" aria-label="搜索" style="background: transparent;" v-model="data">
+          
+          <button class="button" aria-label="搜索" @click="Sea"><i  class="iconfont icon-sousuo"></i></button>
+          
         </div>
       </div>
 
@@ -30,7 +32,7 @@
             <div style="font-size: 24px">购物车</div>
           </router-link>
          
-          <router-link class="tar-bar-item" to="/profile">
+          <router-link class="tar-bar-item" to="/profile/address">
             <div><i class="iconfont icon-gerenzhongxin-zhong"></i></div>
             <div style="font-size: 24px">个人中心</div>
           </router-link>
@@ -39,8 +41,33 @@
     </div>
 
   </div>
-  <router-view/>
+  <router-view :key="$router.fullPath" />
 </template>
+
+<script>
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+export default {
+  name: "Category",
+  setup() {
+    const data = ref('');
+    const router = useRouter();
+    const Sea = () => {
+      
+      router.push({path:'/search', query:{data:data.value}});
+     
+    }
+    return {
+      data,
+      Sea
+    }
+  },
+  components: {
+    
+  }
+}
+</script>
+
 
 <style lang="scss">
 @import 'assets/css/base.css';

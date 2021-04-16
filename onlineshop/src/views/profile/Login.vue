@@ -83,7 +83,7 @@ export default {
               console.log(this.$store)
               console.log(token);
               that.succcess();
-              that.$router.push({path:'/profile'});
+              that.$router.push({path:'/profile/address'});
               that.resetForm('ruleForm');
             }else{
               that.fail();

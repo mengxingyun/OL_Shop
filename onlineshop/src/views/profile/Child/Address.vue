@@ -9,14 +9,14 @@
                     <div>{{item.name}} {{item.telphone}} {{item.addr}}</div>
                 </div>
                 <div style="display:table-cell;width: 100px;">
-                    <el-button type="primary" icon="el-icon-edit" circle @click="$router.push({path:'/addrdetail', query:{id:item.id}})"></el-button>
+                    <el-button type="primary" icon="el-icon-edit" circle @click="$router.push({path:'/profile/addrdetail', query:{id:item.id}})"></el-button>
                 </div>
             </div>
         </el-card>
     </div>
     <el-card class="box-card" style="width: 800px; margin-left: 400px">
     <div class="card-header">
-        <el-button type="danger" round style="font-size:20px" @click="$router.push({path:'/addrdetail', query:{id: 0}})">添加地址</el-button>
+        <el-button type="danger" round style="font-size:20px" @click="$router.push({path:'/profile/addrdetail', query:{id: 0}})">添加地址</el-button>
     </div>
     </el-card>
 </template>

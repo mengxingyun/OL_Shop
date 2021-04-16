@@ -9,13 +9,13 @@
 
       class="el-menu-vertical-demo">
 
-      <router-link to="/address">
+      <router-link to="/profile/address">
         <el-menu-item index="1">
           <i class="el-icon-menu"></i>
           <template #title>地址列表</template>
         </el-menu-item>
       </router-link>
-      <router-link to="/order">
+      <router-link to="/profile/order">
         <el-menu-item index="2">
           <i class="el-icon-document"></i>
           <template #title>订单列表</template>
@@ -53,9 +53,9 @@ export default {
           console.log(key, keyPath);
         }
 
-        onMounted(() => {
-          router.push({path:'/address'})
-        })
+        // onMounted(() => {
+        //   router.push({path:'/profile/address'})
+        // })
 
         return {
             state,

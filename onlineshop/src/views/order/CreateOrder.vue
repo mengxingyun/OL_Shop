@@ -3,11 +3,11 @@
         <div class="card-header" style="display:box;"> 
             <div style="display:table-cell;width: 800px; font-size: 20px;">{{ state.address.name }} {{ state.address.telphone }} {{ state.address.addr }}</div>
             <div style="display:table-cell;width: 400px;">
-                <el-button type="primary" plain @click="$router.push({path: '/address'})"> 修改默认地址</el-button>
+                <el-button type="primary" plain @click="$router.push({path: '/profile/address'})"> 修改默认地址</el-button>
             </div>
         </div>
     </el-card>
-    <el-card class="box-card" style="width: 1200px; margin: 0 auto;min-height:600px;">
+    <el-card class="box-card" style="width: 1200px; margin: 0 auto;min-height:400px;">
         <div class="item-list" style="display:box; border: 1px solid #f1f1f1; padding: 20px;" v-for="item in state.carlist" :key="item.id" >
             <div class="default" style="display:table-cell; width: 100px; height:100px; float:left">
                 <img :src="item.url" style="width: 100%;height:100%;object-fit:cover;">
@@ -39,7 +39,7 @@
             </span>
             
             <el-button type="success" round style="font-size:20px" @click="CreOrder">创建订单</el-button>
-            <el-button type="danger" round style="font-size:20px" @click="$router.push({path:'/shopcart'})">取消订单</el-button>
+            <el-button type="danger" round style="font-size:20px" @click="$router.push({path:'/shopcart'})">返回购物车</el-button>
         </div>
     </el-card>
 </template>
@@ -69,7 +69,7 @@ export default {
                         type: 'warning',
                         offset: 300
                     });
-                    router.push({path:'/address'})
+                    router.push({path:'/profile/address'})
                 }
                 else{
                     state.carlist = res.carlist;
@@ -116,7 +116,7 @@ export default {
                     type: 'warning',
                     offset: 300
                     });
-                    router.push({path:'/shopcart'})
+                    router.push({path:'/profile/order'})
                 }
             })
         }
