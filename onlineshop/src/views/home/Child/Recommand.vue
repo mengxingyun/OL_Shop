@@ -147,7 +147,7 @@ export default {
     font: 12px/1.5 Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,"\5B8B\4F53",sans-serif;
     margin: 0;
     padding: 0;
-    width: 92px;
+    width: 140px;
     height: 100%;
     text-align: center;
     color: #fff;
