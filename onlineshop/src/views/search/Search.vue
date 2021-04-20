@@ -34,7 +34,7 @@ export default {
         
         Search(data).then((res) => {
             
-                console.log(res);
+                console.log("搜索返回的数据:", res);
                 goods.list = res;
                 console.log('search Data: ',res);
 

@@ -32,7 +32,7 @@
 import Recommend from "./Child/Recommand";
 import GoodList from "components/content/goods/GoodList";
 import { getHomeHotData, getHomeRecommendData } from "network/home";
-import { onMounted, reactive, ref } from "vue";
+import { onMounted, onUnmounted, reactive, ref } from "vue";
 export default {
   name: "Home",
   components: {
@@ -87,8 +87,12 @@ export default {
         goods.page = res.page;
       });
 
-      window.addEventListener("scroll", isRefresh, true);
+      window.addEventListener("scroll", isRefresh);
     });
+
+    onUnmounted(() => {
+      window.removeEventListener('scroll', isRefresh) ;
+    })
 
     return {
       recommends,
@@ -97,6 +101,7 @@ export default {
       isRefreshBool,
       refresh,
     };
+
   },
 };
 </script>

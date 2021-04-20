@@ -100,23 +100,13 @@ export default {
     succcess() {
         this.$alert('登录成功', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
+        
         });
       },
     fail() {
         this.$alert('用户名或密码错误', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
+         
         });
       }
   },

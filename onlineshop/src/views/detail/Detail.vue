@@ -138,7 +138,8 @@ export default {
         onMounted(() => {
             id.value = route.query.id;
             getDetail(id.value).then((res) => {
-                good.mes = res.list[0];
+                console.log(res);   
+                good.mes = res.list;
                 console.log(good);
             })
         })

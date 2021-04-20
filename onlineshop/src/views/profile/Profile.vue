@@ -66,31 +66,19 @@ export default {
         success() {
         this.$alert('已退出', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
       },
 
       fail(){
         this.$alert('请先登录', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
       },
 
       toLogout(){
         const token = window.localStorage.getItem('token');
         logout({type: 'Logout', token}).then(res => {
-            console.log(res.data.flag);
+            console.log("退出登录返回的信息: ", res.data.flag);
             if(res.data.flag){
                 window.localStorage.setItem('token', ''); //清除token
                 console.log(token);

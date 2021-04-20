@@ -101,7 +101,9 @@ export default {
 
     onMounted(() => {
         getCategoryData(goods.cate, goods.page).then((res) => {
+            console.log(res);
             goods.list = res.list;
+            
             console.log('分类数据','类别',res.cate,'第几页', res.page);
         })
     });

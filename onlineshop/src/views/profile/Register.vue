@@ -95,6 +95,7 @@ export default {
         if (valid) {
           var that = this;
           register(this.ruleForm).then(res=>{
+            console.log("注册返回的信息: ",res)
             var flag = res.data.flag;
             if(flag){
               that.succcess();
@@ -117,23 +118,11 @@ export default {
     succcess() {
         this.$alert('注册成功', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
       },
     fail() {
         this.$alert('用户名已被注册', '提示', {
           confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
         });
       }
   },

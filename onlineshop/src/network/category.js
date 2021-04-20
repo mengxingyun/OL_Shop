@@ -1,6 +1,6 @@
 import {request} from './request';
 
-const url = 'http://127.0.0.1:8000/vue/';
+const url = 'https://3c6e0267d5e14cbf9c85567c3ba915c6.apig.cn-north-4.huaweicloudapis.com/cate_test';
 
 export function getCategoryData(cate, page){
     return request({
