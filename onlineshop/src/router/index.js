@@ -17,6 +17,7 @@ const OrderNoPay = () => import('../views/profile/Child/OrderNoPay'); //获取�
 const OrderhasPay = () => import('../views/profile/Child/OrderhasPay'); //获取已支付订单
 const OrderEnd = () => import('../views/profile/Child/OrderEnd');//已经取消和已经结束的订单
 const Search = () => import('../views/search/Search');
+const OnlinePlay = () => import('../views/onlineplay/OnlinePlay'); //直播
 
 const routes = [
   {
@@ -113,6 +114,15 @@ const routes = [
     path: '/createorder',
     name: 'CreateOrder',
     component: CreateOrder
+  },
+  {
+    path: '/onlineplay',
+    name: 'OnlinePlay',
+    component: OnlinePlay
+  },
+  {
+    path: '/goto',
+    name: 'goto'
   }
 ]
 

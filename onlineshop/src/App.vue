@@ -36,6 +36,11 @@
             <div><i class="iconfont icon-gerenzhongxin-zhong"></i></div>
             <div style="font-size: 24px">个人中心</div>
           </router-link>
+
+          <router-link class="tar-bar-item" to="/onlineplay">
+            <div><i class="iconfont icon-zhibobofangshexiangjitianxianmianxing"></i></div>
+            <div style="font-size: 24px">直播</div>
+          </router-link>
         
       </div>
     </div>

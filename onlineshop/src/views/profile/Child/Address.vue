@@ -35,7 +35,7 @@ export default {
             const token = window.localStorage.getItem('token');
             getAddressList(token).then((res) => {
                 state.list = res;
-                console.log(state.list);
+                console.log('----',state.list);
             });
 
         })
