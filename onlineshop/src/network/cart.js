@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {request} from './request';
+import { setEncrypt } from './rsa';
 
-const url = 'http://127.0.0.1:8000/vue/';
+const url = 'https://3c6e0267d5e14cbf9c85567c3ba915c6.apig.cn-north-4.huaweicloudapis.com/cart_test';
 
 
 const instance = axios.create({
@@ -10,7 +11,7 @@ const instance = axios.create({
 
 //将商品添加至购物车
 export function addCart(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -20,7 +21,7 @@ export function addCart(data){
 }
 
 export function toCart(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -35,16 +36,18 @@ export function getCart(token){
         url: url,
         method: 'get',
 
-        params: {
+        params:{ 
+        data:setEncrypt( JSON.stringify({
             type: "getCart",
             token
+            }) )
         }
     })
 }
 
 //修改购物车
 export function modifyCart(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -55,7 +58,7 @@ export function modifyCart(data){
 
 //选择商品的状态
 export function modifyState(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -66,7 +69,7 @@ export function modifyState(data){
 
 //全部修改商品的状态
 export function modifyStateAll(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -77,7 +80,7 @@ export function modifyStateAll(data){
 
 //删除购物车商品
 export function deleteCartItem(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"

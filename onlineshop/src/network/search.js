@@ -1,4 +1,5 @@
 import {request} from './request';
+import { setEncrypt } from './rsa';
 
 const url = 'https://3c6e0267d5e14cbf9c85567c3ba915c6.apig.cn-north-4.huaweicloudapis.com/search_test';
 
@@ -7,9 +8,11 @@ export function Search(data) {
         url: url,
         method: 'get',
 
-        params: {
+        params:{
+        data:setEncrypt( JSON.stringify({
             type: "Search",
             data,
+           }))
         }
     })
 }

@@ -1,5 +1,6 @@
 import {request} from './request';
 import axios from 'axios';
+import { setEncrypt } from './rsa';
 
 const url = 'https://3c6e0267d5e14cbf9c85567c3ba915c6.apig.cn-north-4.huaweicloudapis.com/address_test';
 
@@ -9,7 +10,9 @@ const instance = axios.create({
 
 //添加地址
 export function addAddress(data){
-    data = JSON.stringify(data)
+    //console.log( "position1:"+data )
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    console.log( "position2:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -20,7 +23,8 @@ export function addAddress(data){
 
 //编辑地址
 export function editAddress(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    console.log( "position3:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -31,7 +35,8 @@ export function editAddress(data){
 
 //删除地址
 export function deleteAddress(data){
-    data = JSON.stringify(data)
+    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    console.log( "position4:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -46,9 +51,11 @@ export function getAddressList(token){
         url: url,
         method: 'get',
 
-        params: {
+        params:{ 
+        data:setEncrypt( JSON.stringify({
             type: "getAddressList",
             token
+            }) )
         }
     })
 }
@@ -60,9 +67,11 @@ export function getAddressDetail(token, id){
         method: 'get',
 
         params: {
+        data:setEncrypt( JSON.stringify( {
             type: "getAddressDetail",
             token,
             id
+           } ))
         }
     })
 }

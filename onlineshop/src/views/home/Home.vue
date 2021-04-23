@@ -65,11 +65,11 @@ export default {
     const page_more = goods.page + 1;
 
     getHomeRecommendData(page_more).then((res) => {
-    console.log("推荐数据+", res);
+    //console.log("推荐数据+", res);
     if (res.list.length > 0) {
         goods.list = [...goods.list, ...res.list];
         goods.page = goods.page + 1;
-        console.log(goods.list);
+        //console.log(goods.list);
         isRefreshBool.value = true;
     }
     });
@@ -77,12 +77,12 @@ export default {
 
     onMounted(() => {
       getHomeHotData().then((res) => {
-        console.log("热销数据", res);
+        //console.log("热销数据", res);
         recommends.value = res;
       });
 
       getHomeRecommendData(goods.page).then((res) => {
-        console.log("推荐数据", res);
+        //console.log("推荐数据", res);
         goods.list = res.list;
         goods.page = res.page;
       });
