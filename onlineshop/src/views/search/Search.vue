@@ -20,7 +20,7 @@ import CateGoods from '../category/Child/CateGoods';
 import { useRoute } from 'vue-router';
 
 export default {
-  name: "Category",
+  name: "Search",
   components: {
     CateGoods  
   },

@@ -47,7 +47,7 @@
 
   </div>
   <router-view :key="$router.fullPath" v-slot="{Component}">
-      <keep-alive include="Category">
+      <keep-alive include="Category,Search">
         <component :is="Component"/>
       </keep-alive>
   </router-view>
