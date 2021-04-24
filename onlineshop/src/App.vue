@@ -46,7 +46,11 @@
     </div>
 
   </div>
-  <router-view :key="$router.fullPath" />
+  <router-view :key="$router.fullPath" v-slot="{Component}">
+      <keep-alive include="Category">
+        <component :is="Component"/>
+      </keep-alive>
+  </router-view>
 </template>
 
 <script>
