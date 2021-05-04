@@ -19,7 +19,11 @@ const instance = axios.create({
 // }
 
 export function register(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['username'] = setEncrypt( data['username'] )
+    data['pass'] = setEncrypt( data['pass'] )
+    data['checkPass'] = setEncrypt( data['checkPass'] )
+    data = JSON.stringify(data)
+    console.log( "register:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -29,9 +33,12 @@ export function register(data){
 }
 
 export function login(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
-    console.log( data )
-    return instance.post(url, data, {
+    var tempdata = JSON.parse( JSON.stringify(data) )
+    tempdata['username']= setEncrypt( tempdata['username'] )
+    tempdata['pass'] = setEncrypt( tempdata['pass'])
+    tempdata = JSON.stringify(tempdata)
+    console.log( "login"+tempdata )
+    return instance.post(url, tempdata, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
             "Content-Type": "application/json"
@@ -40,7 +47,9 @@ export function login(data){
 }
 
 export function logout(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "logout:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -55,10 +64,8 @@ export function getUserData(token){
         method: 'get',
 
         params: {
-        data:setEncrypt(JSON.stringify( {
             type: "getUserData",
-            token, 
-            } ))
-        }
+            token:setEncrypt( token ), 
+            }
     })
 }

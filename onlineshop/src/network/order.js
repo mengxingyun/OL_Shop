@@ -11,8 +11,9 @@ const instance = axios.create({
 
 //创建订单
 export function createOrder(data){
-
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "createOrder:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -28,11 +29,9 @@ export function getOrderPre(token){
         method: 'get',
 
         params:{ 
-        data:setEncrypt( JSON.stringify({
             type: "getOrderPre",
-            token,
-            }))
-        }
+            token:setEncrypt(token),
+            }
     })
 } 
 
@@ -43,12 +42,10 @@ export function getOrderList(token, status){
         method: 'get',
 
         params:{ 
-        data:setEncrypt( JSON.stringify( {
             type: "getOrderList",
-            token,
+            token:setEncrypt(token),
             status, 
-            } ))
-        }
+            }
     })
 }
 
@@ -59,12 +56,10 @@ export function getOrderDetail(order_id, addr_id){
         method: 'get',
 
         params:{
-        data:setEncrypt( JSON.stringify({
             type: "getOrderDetail",
             order_id,
             addr_id
-            } ))
-        }
+            }
     })
 }
 
@@ -74,12 +69,10 @@ export function payOrder(order_id){
         url: url,
         method: 'get',
 
-        params:{ 
-        data:setEncrypt( JSON.stringify( {
+        params:{
             type: "payOrder",
             order_id,
-            }))
-        }
+            }
     })
 }
 
@@ -89,11 +82,9 @@ export function cancelOrder(order_id){
         method: 'get',
 
         params:{
-        data:setEncrypt( JSON.stringify( {
             type: "cancelOrder",
             order_id,
-            } ))
-        }
+            }
     })
 }
 
@@ -104,11 +95,9 @@ export function confirmOrder(order_id){
         method: 'get',
 
         params:{
-        data:setEncrypt(JSON.stringify( {
             type: "confirmOrder",
             order_id,
-            } ))
-        }
+            }
     })
 }
 
@@ -118,11 +107,9 @@ export function deleteOrder(order_id){
         method: 'get',
 
         params:{
-        data:setEncrypt( JSON.stringify( {
             type: "deleteOrder",
             order_id,
-            } ))
-        }
+            }
     })
 }
 

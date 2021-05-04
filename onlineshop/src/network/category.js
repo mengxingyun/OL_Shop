@@ -9,11 +9,9 @@ export function getCategoryData(cate, page){
         method: 'get',
 
         params:{ 
-        data:setEncrypt( JSON.stringify({
             type: "getCategoryData",
             cate, // 请求数据的类别,
             page, //第几页数据
-            }))
-        }
+            }
     })
 }

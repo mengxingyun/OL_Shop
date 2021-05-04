@@ -9,10 +9,8 @@ export function getDetail(id) {
         method: 'get',
 
         params: {
-        data:setEncrypt( JSON.stringify({
             type: "getDetail",
             id,
-            })) 
-        }
+            }
     })
 }

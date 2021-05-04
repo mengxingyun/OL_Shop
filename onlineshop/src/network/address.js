@@ -10,9 +10,9 @@ const instance = axios.create({
 
 //添加地址
 export function addAddress(data){
-    //console.log( "position1:"+data )
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
-    console.log( "position2:"+data )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "addaddress:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -23,8 +23,9 @@ export function addAddress(data){
 
 //编辑地址
 export function editAddress(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
-    console.log( "position3:"+data )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "editaddress:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -35,8 +36,9 @@ export function editAddress(data){
 
 //删除地址
 export function deleteAddress(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
-    console.log( "position4:"+data )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "editaddress:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -47,16 +49,15 @@ export function deleteAddress(data){
 
 //获取地址列表
 export function getAddressList(token){
+    //console.log( "getAddressList:"+typeof(token) )
     return request({
         url: url,
         method: 'get',
 
-        params:{ 
-        data:setEncrypt( JSON.stringify({
+        params:{
             type: "getAddressList",
-            token
-            }) )
-        }
+            "token":setEncrypt(token)
+            }
     })
 }
 
@@ -67,12 +68,10 @@ export function getAddressDetail(token, id){
         method: 'get',
 
         params: {
-        data:setEncrypt( JSON.stringify( {
             type: "getAddressDetail",
-            token,
+            token:setEncrypt( token ),
             id
-           } ))
-        }
+           }
     })
 }
 

@@ -8,12 +8,10 @@ export function getHomeHotData(){
         url: url,
         method: 'get',
 
-        params: { data: setEncrypt(JSON.stringify (
+        params:
             {
             type: "getHomeHotData"
-            })
-            )
-        }
+            }
         
     })
 }
@@ -22,12 +20,10 @@ export function getHomeRecommendData(page){
     return request({
         url: url,
         method: 'get',
-        params:{ data:setEncrypt( JSON.stringify(
+        params:
             {
             type: "getHomeRecommendData",
             page
-            })
-            ) 
-        }
+            }
     })
 }

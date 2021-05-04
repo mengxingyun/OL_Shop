@@ -11,7 +11,9 @@ const instance = axios.create({
 
 //将商品添加至购物车
 export function addCart(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "addCart:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -21,7 +23,9 @@ export function addCart(data){
 }
 
 export function toCart(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "toCart:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -37,17 +41,17 @@ export function getCart(token){
         method: 'get',
 
         params:{ 
-        data:setEncrypt( JSON.stringify({
             type: "getCart",
-            token
-            }) )
-        }
+            token:setEncrypt( token )
+            }
     })
 }
 
 //修改购物车
 export function modifyCart(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "modifyCart:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -58,7 +62,9 @@ export function modifyCart(data){
 
 //选择商品的状态
 export function modifyState(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "modifyState:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -69,7 +75,9 @@ export function modifyState(data){
 
 //全部修改商品的状态
 export function modifyStateAll(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "modifyStateAll:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
@@ -80,7 +88,9 @@ export function modifyStateAll(data){
 
 //删除购物车商品
 export function deleteCartItem(data){
-    data = JSON.stringify( {data:setEncrypt(JSON.stringify(data) )} )
+    data['token'] = setEncrypt( data['token'] )
+    data = JSON.stringify(data)
+    console.log( "deleteCartItem:"+data )
     return instance.post(url, data, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"

@@ -152,11 +152,12 @@ export default {
           }
           deleteCartItem(changedata).then((res) => {
             console.log(res);
-          });
-          getCart(token).then(res => {
+            getCart(token).then(res => {
             console.log('购物车数据', res);
             state.list = res;
           })
+          });
+          
         }
 
         //总价格

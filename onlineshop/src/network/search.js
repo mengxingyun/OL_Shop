@@ -9,10 +9,8 @@ export function Search(data) {
         method: 'get',
 
         params:{
-        data:setEncrypt( JSON.stringify({
             type: "Search",
             data,
-           }))
-        }
+           }
     })
 }
