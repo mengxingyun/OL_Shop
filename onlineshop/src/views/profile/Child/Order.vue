@@ -1,10 +1,25 @@
 <template>
     <el-card class="box-card-header" style="width: 800px; margin-left: 400px">
         <div class="card-header" style="display:flex">
-          <el-button type="primary" plain style="font-size:20px; flex:1" @click="getNoPay">待支付订单</el-button>
-          <el-button type="primary" plain style="font-size:20px;flex:1" @click="getHasPay">已支付订单</el-button>
-          <el-button type="primary" plain style="font-size:20px;flex:1" @click="getEnd">已结束订单</el-button>
-          <el-button type="primary" plain style="font-size:20px;flex:1" @click="getCancel">已取消订单</el-button>
+            <el-badge :value="count.total.unpay" class="itempop" :max="99"  type="error">
+                <el-button type="primary" plain style="font-size:20px; flex:1" @click="getNoPay">待支付订单</el-button>
+            </el-badge>
+
+            <el-badge :value="count.total.haspay" class="itempop" :max="99">
+               <el-button type="primary" plain style="font-size:20px;flex:1" @click="getHasPay">已支付订单</el-button>
+            </el-badge>
+
+            <el-badge :value="count.total.finish" class="itempop" :max="99">
+                <el-button type="primary" plain style="font-size:20px;flex:1" @click="getEnd">已结束订单</el-button>
+            </el-badge>
+
+            <el-badge :value="count.total.cancel" class="itempop" :max="99">
+                <el-button type="primary" plain style="font-size:20px;flex:1" @click="getCancel">已取消订单</el-button>
+            </el-badge>
+          
+          
+          
+          
         </div>
 
     </el-card>
@@ -26,7 +41,7 @@
 
 <script>
 import { onMounted, reactive } from 'vue';
-import { getOrderList} from 'network/order';
+import { getOrderList, getOrderNum} from 'network/order';
 import { useRouter } from 'vue-router';
 export default {
     name: "Order",
@@ -35,6 +50,15 @@ export default {
 
         const orderlist = reactive({
             list: [],
+        })
+
+        const count = reactive({
+            total: {
+                unpay: 0,
+                haspay: 0,
+                finish: 0,
+                cancel: 0
+            }
         })
 
         const getNoPay = () => {
@@ -76,6 +100,11 @@ export default {
         const init = () => {
             const token = window.localStorage.getItem('token');
             const status = 1;
+            getOrderNum(token).then((res) => {
+                console.log("获取各个订单数量", res);
+                count.total = res;
+            });
+
             getOrderList(token, status).then((res) => {
                 console.log("获取的未支付订单", res);
                 orderlist.list = res;
@@ -107,11 +136,16 @@ export default {
             getNoPay,
             getHasPay,
             getCancel,
-            getEnd
+            getEnd,
+            count
         }
     }
 }
 </script>
 
 <style>
+.itempop {
+  margin-top: 10px;
+  margin-right: 40px;
+}
 </style>

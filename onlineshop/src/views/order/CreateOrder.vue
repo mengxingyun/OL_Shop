@@ -24,7 +24,7 @@
             </div>
 
             <div style="display:table-cell;width: 200px; text-align:center; font-size: 20px;">
-                小计: <strong>¥{{ item.price * item.num }}</strong>
+                小计: <strong>¥{{ (item.price * item.num).toFixed(2) }}</strong>
             </div>
             
             <div style="clear:both;"></div>
@@ -35,7 +35,7 @@
            
             <span>
                 <span class="txt">总价:</span>
-                <em class="price">￥{{ total}}</em>
+                <em class="price">￥{{ total.toFixed(2) }}</em>
             </span>
             
             <el-button type="success" round style="font-size:20px" @click="CreOrder">创建订单</el-button>

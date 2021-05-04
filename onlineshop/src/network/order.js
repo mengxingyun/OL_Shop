@@ -35,6 +35,18 @@ export function getOrderPre(token){
     })
 } 
 
+export function getOrderNum(token){
+    return request({
+        url: url,
+        method: 'get',
+
+        params:{ 
+            type: "getOrderNum",
+            token:setEncrypt(token)
+            }
+    })
+}
+
 //获取订单列表
 export function getOrderList(token, status){
     return request({

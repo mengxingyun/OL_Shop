@@ -26,7 +26,7 @@
                   <el-input-number v-model="item.num" :min="1" :max="item.stock" :value="item.id" style="margin-top: 20px;" @change="onChange(item.id, item.num)"></el-input-number>
                 </div>
                 <div class="p-sum">
-                  <strong>¥{{ item.price * item.num }}</strong>
+                  <strong>¥{{ (item.price * item.num).toFixed(2)  }}</strong>
                 </div>
                 <div class="p-ops">
                   <el-button type="danger" icon="el-icon-delete" @click="deleteGood(item.id)" circle></el-button>
@@ -42,7 +42,7 @@
         <el-checkbox v-model="checked" @change="checkAll">全选</el-checkbox>
         <span>
             <span class="txt">总价:</span>
-            <em class="price">￥{{ total}}</em>
+            <em class="price">￥{{ (total).toFixed(2) }}</em>
         </span>
         <el-button type="danger" round style="font-size:20px" @click="OnSubmit">去结算</el-button>
     </div>

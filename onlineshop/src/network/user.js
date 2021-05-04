@@ -19,12 +19,16 @@ const instance = axios.create({
 // }
 
 export function register(data){
-    data['username'] = setEncrypt( data['username'] )
-    data['pass'] = setEncrypt( data['pass'] )
-    data['checkPass'] = setEncrypt( data['checkPass'] )
-    data = JSON.stringify(data)
-    console.log( "register:"+data )
-    return instance.post(url, data, {
+
+    var tempdata = {
+        username: setEncrypt(data['username']),
+        pass: setEncrypt( data['pass'] ),
+        checkPass: setEncrypt( data['checkPass'] )
+    };
+   
+    tempdata = JSON.stringify(tempdata)
+    console.log( "register:"+ tempdata)
+    return instance.post(url, tempdata, {
         headers: {
             // "Content-Type": "application/x-www-form-urlencoded"
             "Content-Type": "application/json"

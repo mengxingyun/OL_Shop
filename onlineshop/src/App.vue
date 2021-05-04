@@ -9,7 +9,7 @@
 
       <div id="search">
         <div class="form" role="searchbox">
-          <input type="text" autocomplete="off" class="text" aria-label="搜索" style="background: transparent;" v-model="data">
+          <input type="text" autocomplete="off" class="text" aria-label="搜索" style="background: transparent;" v-model="data" @keyup.enter="Sea">
           
           <button class="button" aria-label="搜索" @click="Sea"><i  class="iconfont icon-sousuo"></i></button>
           
