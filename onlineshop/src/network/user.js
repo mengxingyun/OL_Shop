@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setEncrypt } from './rsa';
 
-const url = 'https://3c6e0267d5e14cbf9c85567c3ba915c6.apig.cn-north-4.huaweicloudapis.com/login_test';
+const url = 'https://3c6e0267d5e14cbf9c85567c3ba915c6.apig.cn-north-4.huaweicloudapis.com/login_handler';
 
 const instance = axios.create({
     timeout:5000
