@@ -53,7 +53,7 @@ export default {
   },
   watch: {
           // 如果路由发生变化，再次执行该方法
-          "$route": "init"
+          "$route.query.data": "init"
         }
 
 
