@@ -23,7 +23,8 @@ export function register(data){
     var tempdata = {
         username: setEncrypt(data['username']),
         pass: setEncrypt( data['pass'] ),
-        checkPass: setEncrypt( data['checkPass'] )
+        checkPass: setEncrypt( data['checkPass'] ),
+        type:"Register"
     };
    
     tempdata = JSON.stringify(tempdata)
